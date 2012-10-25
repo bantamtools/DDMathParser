@@ -135,8 +135,7 @@
     //figure out if "-" and "+" are unary or binary
     (void)[self _processUnknownOperatorToken:token withError:error];
     
-    if( ([token operatorType] == DDOperatorUnaryPlus) ||
-       ([token operatorType] == DDOperatorMillimetersToMillimeters) )
+    if( [token operatorType] == DDOperatorUnaryPlus)
     {
         // the unary + operator is a no-op operator.  It does nothing, so we'll throw it out
         return YES;

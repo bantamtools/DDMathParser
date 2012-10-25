@@ -35,14 +35,21 @@ if (error != nil) { \
 
 @implementation _DDFunctionUtilities
 
-// this operator is a no-op
+
 + (DDMathFunction) mm_to_mmFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(1);
 		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(first);
         
-		return [DDExpression numberExpressionWithNumber:first];
+        double value = [first doubleValue];
+        
+        // value is in mm, convert to inches
+        if( [DDParser defaultParserUnits] == DDinch )
+            value = [first doubleValue] / 25.4;
+        
+		NSNumber * result = [NSNumber numberWithDouble:value];
+		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
 }
@@ -53,7 +60,13 @@ if (error != nil) { \
 		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(first);
         
-		NSNumber * result = [NSNumber numberWithDouble:([first doubleValue] * 25.4)];
+        double value = [first doubleValue];
+        
+        // value is inches mm, convert to mm
+        if( [DDParser defaultParserUnits] == DDmm )
+            value = [first doubleValue] * 25.4;
+        
+		NSNumber * result = [NSNumber numberWithDouble:value];
 		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);

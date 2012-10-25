@@ -41,6 +41,7 @@ static inline DDOperatorAssociativity DDOperatorGetAssociativity(NSString *o) {
 @synthesize multiplicationAssociativity;
 @synthesize modAssociativity;
 @synthesize powerAssociativity;
+@synthesize parserUnits;
 
 + (void) initialize {
 	if (self == [DDParser class]) {
@@ -88,6 +89,10 @@ static inline DDOperatorAssociativity DDOperatorGetAssociativity(NSString *o) {
 
 + (DDOperatorAssociativity) defaultPowerAssociativity { return DDOperatorGetAssociativity(DDOperatorPower); }
 + (void) setDefaultPowerAssociativity:(DDOperatorAssociativity)newAssociativity { DDOperatorSetAssociativity(DDOperatorPower, newAssociativity); }
+
+static DDParserUnits gDefaultParserUnits = DDmm;
++ (DDParserUnits) defaultParserUnits { return gDefaultParserUnits; }
++ (void) setDefaultParserUnits:(DDParserUnits)parserUnits { gDefaultParserUnits = parserUnits; }
 
 
 + (id) parserWithString:(NSString *)string error:(NSError **)error {

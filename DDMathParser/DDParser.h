@@ -12,6 +12,11 @@
 @class DDMathStringTokenizer;
 @class DDExpression;
 
+typedef enum {
+    DDinch = 0,
+    DDmm = 1
+} DDParserUnits;
+
 @interface DDParser : NSObject {
 	DDMathStringTokenizer * tokenizer;
 	
@@ -24,7 +29,7 @@
 	DDOperatorAssociativity multiplicationAssociativity;
 	DDOperatorAssociativity modAssociativity;
 	DDOperatorAssociativity powerAssociativity;
-	
+	DDParserUnits parserUnits;
 }
 
 @property DDOperatorAssociativity bitwiseOrAssociativity;
@@ -36,6 +41,7 @@
 @property DDOperatorAssociativity multiplicationAssociativity;
 @property DDOperatorAssociativity modAssociativity;
 @property DDOperatorAssociativity powerAssociativity;
+@property DDParserUnits parserUnits;
 
 + (DDOperatorAssociativity) defaultBitwiseOrAssociativity;
 + (void) setDefaultBitwiseOrAssociativity:(DDOperatorAssociativity)newAssociativity;
@@ -63,6 +69,9 @@
 
 + (DDOperatorAssociativity) defaultPowerAssociativity;
 + (void) setDefaultPowerAssociativity:(DDOperatorAssociativity)newAssociativity;
+
++ (DDParserUnits) defaultParserUnits;
++ (void) setDefaultParserUnits:(DDParserUnits)parserUnits;
 
 + (id)parserWithTokenizer:(DDMathStringTokenizer *)tokenizer error:(NSError **)error;
 - (id)initWithTokenizer:(DDMathStringTokenizer *)tokenizer error:(NSError **)error;
