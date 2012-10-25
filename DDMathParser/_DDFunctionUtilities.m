@@ -35,6 +35,32 @@ if (error != nil) { \
 
 @implementation _DDFunctionUtilities
 
+// this operator is a no-op
++ (DDMathFunction) mm_to_mmFunction {
+	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+		REQUIRE_N_ARGS(1);
+		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
+		RETURN_IF_NIL(first);
+        
+		return [DDExpression numberExpressionWithNumber:first];
+	};
+	return DD_AUTORELEASE([function copy]);
+}
+
++ (DDMathFunction) in_to_mmFunction {
+	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+		REQUIRE_N_ARGS(1);
+		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
+		RETURN_IF_NIL(first);
+        
+		NSNumber * result = [NSNumber numberWithDouble:([first doubleValue] * 25.4)];
+		return [DDExpression numberExpressionWithNumber:result];
+	};
+	return DD_AUTORELEASE([function copy]);
+}
+
+
+
 + (DDMathFunction) addFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(2);

@@ -97,6 +97,7 @@
     NSMutableArray *operators = [NSMutableArray array];
     NSInteger precedence = 0;
     
+        
     [operators addObject:[self infoForOperatorFunction:DDOperatorLogicalOr token:@"||" arity:DDOperatorArityBinary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     // \u2228 is ∨
     [operators addObject:[self infoForOperatorFunction:DDOperatorLogicalOr token:@"\u2228" arity:DDOperatorArityBinary precedence:precedence associativity:DDOperatorAssociativityLeft]];
@@ -195,6 +196,15 @@
     
     [operators addObject:[self infoForOperatorFunction:DDOperatorPower token:@"**" arity:DDOperatorArityBinary precedence:precedence associativity:DDOperatorAssociativityRight]];
     precedence++;
+    
+    
+    // unit conversion operators
+    [operators addObject:[self infoForOperatorFunction:DDOperatorMillimetersToMillimeters token:@"mm" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToMillimeters token:@"in" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToMillimeters token:@"inch" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+
     
     // ( and ) have the same precedence
     // these are defined as unary right/left associative for convenience
