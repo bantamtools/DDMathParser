@@ -284,7 +284,7 @@
 		20756DD21639B12B00317641 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Otherlab;
 			};
 			buildConfigurationList = 20756DD51639B12B00317641 /* Build configuration list for PBXProject "DDMathParser" */;
