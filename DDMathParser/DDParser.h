@@ -14,7 +14,11 @@
 
 typedef enum {
     DDinch = 0,
-    DDmm = 1
+    DDmm = 1,
+    DDmil = 2,
+    DDcm = 3,
+    DDfeet = 4,
+    DDmeters = 5,
 } DDParserUnits;
 
 @interface DDParser : NSObject {
