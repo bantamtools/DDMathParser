@@ -203,7 +203,7 @@
     
     [operators addObject:[self infoForOperatorFunction:DDOperatorCentimetersToBase token:@"cm" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
-    //[operators addObject:[self infoForOperatorFunction:DDOperatorInchesToMillimeters token:@"\"" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToBase token:@"\"" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
     [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToBase token:@"in" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
@@ -212,6 +212,8 @@
     [operators addObject:[self infoForOperatorFunction:DDOperatorMilsToBase token:@"mil" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
     [operators addObject:[self infoForOperatorFunction:DDOperatorFeetToBase token:@"ft" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorFeetToBase token:@"'" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
     [operators addObject:[self infoForOperatorFunction:DDOperatorMetersToBase token:@"m" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
 
