@@ -35,8 +35,7 @@ if (error != nil) { \
 
 @implementation _DDFunctionUtilities
 
-
-+ (DDMathFunction) mm_to_mmFunction {
++ (DDMathFunction) mm_unitFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(1);
 		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
@@ -54,7 +53,7 @@ if (error != nil) { \
 	return DD_AUTORELEASE([function copy]);
 }
 
-+ (DDMathFunction) in_to_mmFunction {
++ (DDMathFunction) in_unitFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(1);
 		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
@@ -71,8 +70,6 @@ if (error != nil) { \
 	};
 	return DD_AUTORELEASE([function copy]);
 }
-
-
 
 + (DDMathFunction) addFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {

@@ -8,8 +8,8 @@
 
 #import "DDParserTypes.h"
 
-NSString *const DDOperatorMillimetersToMillimeters = @"mm_to_mm";
-NSString *const DDOperatorInchesToMillimeters = @"in_to_mm";
+NSString *const DDOperatorMillimetersUnit = @"mm_unit";
+NSString *const DDOperatorInchesUnit = @"in_unit";
 
 NSString *const DDOperatorInvalid = @"invalid";
 NSString *const DDOperatorLogicalOr = @"l_or";

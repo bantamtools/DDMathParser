@@ -20,8 +20,8 @@ typedef enum {
     DDOperatorArityBinary
 } DDOperatorArity;
 
-extern NSString *const DDOperatorMillimetersToMillimeters;
-extern NSString *const DDOperatorInchesToMillimeters;
+extern NSString *const DDOperatorMillimetersUnit;
+extern NSString *const DDOperatorInchesUnit;
 
 extern NSString *const DDOperatorInvalid;
 extern NSString *const DDOperatorLogicalOr;

@@ -199,11 +199,11 @@
     
     
     // unit conversion operators
-    [operators addObject:[self infoForOperatorFunction:DDOperatorMillimetersToMillimeters token:@"mm" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorMillimetersUnit token:@"mm" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
-    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToMillimeters token:@"in" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesUnit token:@"in" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
-    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToMillimeters token:@"inch" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesUnit token:@"inch" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
 
     
     // ( and ) have the same precedence
