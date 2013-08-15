@@ -13,6 +13,8 @@
 
 }
 
++ (DDMathFunction) mm_unitFunction;
++ (DDMathFunction) in_unitFunction;
 + (DDMathFunction) addFunction;
 + (DDMathFunction) subtractFunction;
 + (DDMathFunction) multiplyFunction;
