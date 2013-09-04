@@ -84,6 +84,6 @@ typedef enum {
 - (id) initWithString:(NSString *)string error:(NSError **)error;
 
 - (DDExpression *) parsedExpressionWithError:(NSError **)error;
-- (DDOperatorAssociativity) associativityForOperator:(NSString *)operator;
+- (DDOperatorAssociativity) associativityForOperator:(NSString *)operatorType;
 
 @end
