@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "DDParser.h"
 
 @interface NSString (DDMathParsing)
 
+- (NSNumber *) numberByEvaluatingStringWithUnits:(DDParserUnits)units;
 - (NSNumber *) numberByEvaluatingString;
 - (NSNumber *) numberByEvaluatingStringWithSubstitutions:(NSDictionary *)substitutions;
 - (NSNumber *) numberByEvaluatingStringWithSubstitutions:(NSDictionary *)substitutions error:(NSError **)error;
