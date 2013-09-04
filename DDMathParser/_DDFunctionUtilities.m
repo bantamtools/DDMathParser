@@ -62,8 +62,8 @@ double DDConvertUnits( double value, DDParserUnits from, DDParserUnits to )
         
         double value = [first doubleValue];
         
-        // convert to mm, then back to base units
-        DDParserUnits base = [DDParser defaultParserUnits];
+        // get the base units from the variables dictionary
+        DDParserUnits base = [[variables objectForKey:@"__base__units"] intValue];
         
         value = DDConvertUnits([first doubleValue], from_units, base);
         

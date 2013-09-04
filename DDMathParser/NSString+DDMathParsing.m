@@ -12,16 +12,13 @@
 @implementation NSString (DDMathParsing)
 
 - (NSNumber *) numberByEvaluatingStringWithUnits:(DDParserUnits)units {
-    // FIXME: propogate units into the parser context.
-    DDParserUnits oldunits = [DDParser defaultParserUnits];
-    [DDParser setDefaultParserUnits:units];
-    NSNumber *ret = [self numberByEvaluatingString];
-    [DDParser setDefaultParserUnits:oldunits];
-    return ret;
+    NSDictionary *variables = @{ @"__base__units": [NSNumber numberWithInt:units] };
+	return [self numberByEvaluatingStringWithSubstitutions:variables];
 }
 
 - (NSNumber *) numberByEvaluatingString {
-	return [self numberByEvaluatingStringWithSubstitutions:nil];
+    NSDictionary *variables = @{ @"__base__units": [NSNumber numberWithInt:[DDParser defaultParserUnits]] };
+	return [self numberByEvaluatingStringWithSubstitutions:variables];
 }
 
 - (NSNumber *) numberByEvaluatingStringWithSubstitutions:(NSDictionary *)substitutions {
