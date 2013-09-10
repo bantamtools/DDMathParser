@@ -14,7 +14,11 @@
 
 typedef enum {
     DDinch = 0,
-    DDmm = 1
+    DDmm = 1,
+    DDmil = 2,
+    DDcm = 3,
+    DDfeet = 4,
+    DDmeters = 5,
 } DDParserUnits;
 
 @interface DDParser : NSObject {
@@ -80,6 +84,6 @@ typedef enum {
 - (id) initWithString:(NSString *)string error:(NSError **)error;
 
 - (DDExpression *) parsedExpressionWithError:(NSError **)error;
-- (DDOperatorAssociativity) associativityForOperator:(NSString *)operator;
+- (DDOperatorAssociativity) associativityForOperator:(NSString *)operatorType;
 
 @end

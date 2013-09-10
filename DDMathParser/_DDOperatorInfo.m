@@ -199,11 +199,23 @@
     
     
     // unit conversion operators
-    [operators addObject:[self infoForOperatorFunction:DDOperatorMillimetersToMillimeters token:@"mm" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorMillimetersToBase token:@"mm" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
-    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToMillimeters token:@"in" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorCentimetersToBase token:@"cm" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
-    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToMillimeters token:@"inch" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToBase token:@"\"" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToBase token:@"in" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorInchesToBase token:@"inch" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorMilsToBase token:@"mil" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorFeetToBase token:@"ft" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorFeetToBase token:@"'" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    
+    [operators addObject:[self infoForOperatorFunction:DDOperatorMetersToBase token:@"m" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
 
     
     // ( and ) have the same precedence

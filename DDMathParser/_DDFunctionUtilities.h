@@ -13,6 +13,13 @@
 
 }
 
++ (DDMathFunction) cm_to_baseFunction;
++ (DDMathFunction) mil_to_baseFunction;
++ (DDMathFunction) mm_to_baseFunction;
++ (DDMathFunction) in_to_baseFunction;
++ (DDMathFunction) m_to_baseFunction;
++ (DDMathFunction) ft_to_baseFunction;
+
 + (DDMathFunction) addFunction;
 + (DDMathFunction) subtractFunction;
 + (DDMathFunction) multiplyFunction;

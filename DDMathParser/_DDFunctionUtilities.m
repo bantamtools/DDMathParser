@@ -33,20 +33,39 @@ if (error != nil) { \
 
 #define RETURN_IF_NIL(_n) if ((_n) == nil) { return nil; }
 
+double DDConvertUnits( double value, DDParserUnits from, DDParserUnits to )
+{
+    double unit_conv[6][6] =
+    {
+        //  to
+        //  inch      mm           mil       cm        ft         m
+        {       1.,   25.4,        1000,    2.54,    1/12.,      0.0254 },  // inch  from
+        {   1/25.4,     1.,    1/0.0254,  1/10.0,  1/304.8,      1/1000.},  // mm
+        {   1/1000, 0.0254,          1., 0.00254, 1/12000., 1/0.0000254 },  // mils
+        {   1/2.54,     10,   1/0.00254,      1.,  1/30.48,       1/100.},  // cm
+        {      12.,  304.8,       12000,   30.48,       1.,      0.3048 },  // ft
+        { 1/0.0254,   1000, 1/0.0000254,     100,  1/.3048,           1.},  // m
+    };
+    
+    return value * unit_conv[from][to];
+}
+
+
 @implementation _DDFunctionUtilities
 
-
-+ (DDMathFunction) mm_to_mmFunction {
-	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
++ (DDMathFunction) unit_to_base_function:(DDParserUnits)from_units
+{
+    DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(1);
 		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(first);
         
         double value = [first doubleValue];
         
-        // value is in mm, convert to inches
-        if( [DDParser defaultParserUnits] == DDinch )
-            value = [first doubleValue] / 25.4;
+        // get the base units from the variables dictionary
+        DDParserUnits base = [[variables objectForKey:@"__base__units"] intValue];
+        
+        value = DDConvertUnits([first doubleValue], from_units, base);
         
 		NSNumber * result = [NSNumber numberWithDouble:value];
 		return [DDExpression numberExpressionWithNumber:result];
@@ -54,22 +73,28 @@ if (error != nil) { \
 	return DD_AUTORELEASE([function copy]);
 }
 
-+ (DDMathFunction) in_to_mmFunction {
-	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
-		REQUIRE_N_ARGS(1);
-		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
-		RETURN_IF_NIL(first);
-        
-        double value = [first doubleValue];
-        
-        // value is inches mm, convert to mm
-        if( [DDParser defaultParserUnits] == DDmm )
-            value = [first doubleValue] * 25.4;
-        
-		NSNumber * result = [NSNumber numberWithDouble:value];
-		return [DDExpression numberExpressionWithNumber:result];
-	};
-	return DD_AUTORELEASE([function copy]);
++ (DDMathFunction) cm_to_baseFunction {
+    return [self unit_to_base_function:DDcm];
+}
+
++ (DDMathFunction) mil_to_baseFunction {
+    return [self unit_to_base_function:DDmil];
+}
+
++ (DDMathFunction) mm_to_baseFunction {
+        return [self unit_to_base_function:DDmm];
+}
+
++ (DDMathFunction) in_to_baseFunction {
+    return [self unit_to_base_function:DDinch];
+}
+
++ (DDMathFunction) m_to_baseFunction {
+    return [self unit_to_base_function:DDmeters];
+}
+
++ (DDMathFunction) ft_to_baseFunction {
+    return [self unit_to_base_function:DDfeet];
 }
 
 

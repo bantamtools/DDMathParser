@@ -11,8 +11,14 @@
 
 @implementation NSString (DDMathParsing)
 
+- (NSNumber *) numberByEvaluatingStringWithUnits:(DDParserUnits)units {
+    NSDictionary *variables = @{ @"__base__units": [NSNumber numberWithInt:units] };
+	return [self numberByEvaluatingStringWithSubstitutions:variables];
+}
+
 - (NSNumber *) numberByEvaluatingString {
-	return [self numberByEvaluatingStringWithSubstitutions:nil];
+    NSDictionary *variables = @{ @"__base__units": [NSNumber numberWithInt:[DDParser defaultParserUnits]] };
+	return [self numberByEvaluatingStringWithSubstitutions:variables];
 }
 
 - (NSNumber *) numberByEvaluatingStringWithSubstitutions:(NSDictionary *)substitutions {
