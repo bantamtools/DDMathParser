@@ -437,6 +437,7 @@
 				INFOPLIST_FILE = "DDMathParser/DDMathParser-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)/../../build";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
