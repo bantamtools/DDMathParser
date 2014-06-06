@@ -59,13 +59,11 @@ double DDConvertUnits( double value, DDParserUnits from, DDParserUnits to )
 		REQUIRE_N_ARGS(1);
 		NSNumber * first = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(first);
-        
-        double value = [first doubleValue];
-        
+                
         // get the base units from the variables dictionary
         DDParserUnits base = [[variables objectForKey:@"__base__units"] intValue];
         
-        value = DDConvertUnits([first doubleValue], from_units, base);
+        double value = DDConvertUnits([first doubleValue], from_units, base);
         
 		NSNumber * result = [NSNumber numberWithDouble:value];
 		return [DDExpression numberExpressionWithNumber:result];
