@@ -50,6 +50,7 @@ extern NSString *const DDOperatorModulo;
 extern NSString *const DDOperatorBitwiseNot;
 extern NSString *const DDOperatorFactorial;
 extern NSString *const DDOperatorDegree;
+extern NSString *const DDOperatorRad;
 extern NSString *const DDOperatorPercent;
 extern NSString *const DDOperatorPower;
 extern NSString *const DDOperatorParenthesisOpen;

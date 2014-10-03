@@ -183,10 +183,11 @@
     
     // all the left associative unary operators have the same precedence
     [operators addObject:[self infoForOperatorFunction:DDOperatorFactorial token:@"!" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
-    // \u00ba is º (option-0); not necessary a degree sign, but common enough for it
-    [operators addObject:[self infoForOperatorFunction:DDOperatorDegree token:@"\u00ba" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
-    // \u00b0 is °
-    [operators addObject:[self infoForOperatorFunction:DDOperatorDegree token:@"\u00b0" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+//    // \u00ba is º (option-0); not necessary a degree sign, but common enough for it
+//    [operators addObject:[self infoForOperatorFunction:DDOperatorDegree token:@"\u00ba" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+//    // \u00b0 is °
+//    [operators addObject:[self infoForOperatorFunction:DDOperatorDegree token:@"\u00b0" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
+    [operators addObject:[self infoForOperatorFunction:DDOperatorRad token:@"rad" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
     
 #if !DD_INTERPRET_PERCENT_SIGN_AS_MOD
     [operators addObject:[self infoForOperatorFunction:DDOperatorPercent token:@"%" arity:DDOperatorArityUnary precedence:precedence associativity:DDOperatorAssociativityLeft]];
